@@ -1,9 +1,10 @@
 import React from 'react'
+import AddExpense from './AddExpense'
 
 function Add() {
   return (
     <div>
-      Add Expense
+      <AddExpense/>
     </div>
   )
 }
