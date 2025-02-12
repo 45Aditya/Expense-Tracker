@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    expenses: []  // Initializes an empty array for expenses
+    expenses: []      // Initializes an empty array for expenses
 };
 
 const expenseSlice = createSlice({
