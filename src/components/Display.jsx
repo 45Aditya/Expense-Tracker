@@ -36,7 +36,7 @@ function DisplayList() {
                 padding: "20px",
                 borderRadius: "10px",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                width: "500px",  // Increased width to fit inputs
+                width: "500px", 
                 textAlign: "center"
             }}>
                 <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "15px" }}>Expense List</h2>
@@ -45,7 +45,6 @@ function DisplayList() {
                     <p style={{ color: "#555" }}>No expenses added yet.</p>
                 ) : (
                     <ul style={{ listStyle: "none", padding: 0 }}>
-                        {/* Table Headers */}
                         <div style={{
                             display: "grid",
                             gridTemplateColumns: "2fr 1fr 2fr 1fr 1fr",
