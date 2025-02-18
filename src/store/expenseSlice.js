@@ -31,7 +31,7 @@ const expenseSlice = createSlice({
                     ? {
                         ...expense, 
                         ...(action.payload.title && { title: action.payload.title }), 
-                        ...(action.payload.amount && { amount: action.payload.amount }), 
+                        ...(action.payload.amount && { amount: Number(action.payload.amount) }), 
                         ...(action.payload.category && { category: action.payload.category }) 
                       }
                     : expense

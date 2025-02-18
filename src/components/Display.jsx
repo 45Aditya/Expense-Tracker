@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeExpense, updateExpense } from "../store/expenseSlice";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function DisplayList() {
+    const navigate = useNavigate();
+
+    const home = () => {
+        navigate("/");
+    };
+
     const expenses = useSelector((state) => state.expense.expenses);
     const dispatch = useDispatch();
 
@@ -26,6 +34,7 @@ function DisplayList() {
     return (
         <div style={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             minHeight: "100vh",
@@ -37,7 +46,8 @@ function DisplayList() {
                 borderRadius: "10px",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                 width: "500px", 
-                textAlign: "center"
+                textAlign: "center",
+                marginBottom: "20px"
             }}>
                 <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "15px" }}>Expense List</h2>
 
@@ -67,9 +77,9 @@ function DisplayList() {
                                 padding: "10px",
                                 borderRadius: "8px",
                                 display: "grid",
-                                gridTemplateColumns: "2fr 1fr 2fr 1fr 1fr", // Fixed layout
+                                gridTemplateColumns: "2fr 1fr 2fr 1fr 1fr",
                                 alignItems: "center",
-                                gap: "8px"  // Spacing between elements
+                                gap: "8px"
                             }}>
                                 {editId === expense.id ? (
                                     <>
@@ -118,6 +128,21 @@ function DisplayList() {
                     </ul>
                 )}
             </div>
+            <Button 
+                btnText="Home" 
+                classname="total-expense" 
+                onClick={home} 
+                style={{
+                    padding: "12px 20px",
+                    fontSize: "18px",
+                    backgroundColor: "#dc3545",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    marginTop: "20px"
+                }}
+            />
         </div>
     );
 }

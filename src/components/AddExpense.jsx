@@ -3,10 +3,17 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { addExpense } from '../store/expenseSlice';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import Button from './Button';
 
 function AddExpense() {
     const dispatch = useDispatch();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    
+    const navigate = useNavigate();
+    const home = () => {
+        navigate("/");
+    };
     
     const notify = () => toast("Your expense has been added!");
 
@@ -24,11 +31,12 @@ function AddExpense() {
     return (
         <div style={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             minHeight: "100vh",
             backgroundColor: "#f3f4f6",
-            padding: "20px"
+            gap: "20px"  
         }}>
             <div style={{
                 backgroundColor: "white",
@@ -55,6 +63,7 @@ function AddExpense() {
                     gap: "15px",
                     width: "100%"
                 }}>
+                    {/* Title */}
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <label style={{
                             fontSize: "14px",
@@ -83,7 +92,6 @@ function AddExpense() {
                         />
                         {errors.title && <p style={{ color: "red", fontSize: "12px", marginTop: "4px" }}>Title is required</p>}
                     </div>
-
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <label style={{
                             fontSize: "14px",
@@ -112,7 +120,6 @@ function AddExpense() {
                         />
                         {errors.amount && <p style={{ color: "red", fontSize: "12px", marginTop: "4px" }}>Amount is required</p>}
                     </div>
-
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <label style={{
                             fontSize: "14px",
@@ -141,7 +148,6 @@ function AddExpense() {
                         />
                         {errors.category && <p style={{ color: "red", fontSize: "12px", marginTop: "4px" }}>Category is required</p>}
                     </div>
-
                     <button type="submit" style={{
                         width: "100%",
                         backgroundColor: "#3b82f6",
@@ -160,6 +166,20 @@ function AddExpense() {
                     </button>
                 </form>
             </div>
+            <Button 
+                btnText="Home" 
+                classname="total-expense" 
+                onClick={home} 
+                style={{
+                    padding: "12px 20px",
+                    fontSize: "18px",
+                    backgroundColor: "#dc3545",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer"
+                }}
+            />
             <ToastContainer />
         </div>
     );
